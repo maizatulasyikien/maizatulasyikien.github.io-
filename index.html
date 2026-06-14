@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAIZATUL ASYIKIEN | Mobile Programming e-Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* SDG 12 Inspired Green & Emerald Premium Theme Palette */
+            --primary: #2e7d32;
+            --primary-light: #f1f8f2;
+            --primary-accent: #1b5e20;
+            --secondary: #81c784;
+            --accent: #e65100;
+            --accent-light: #fff3e0;
+            --text-main: #1c2a1e;
+            --text-muted: #556b58;
+            --bg-body: #fafdfa;
+            --bg-card: #ffffff;
+            --border-color: #e3ede4;
+            
+            /* Professional UI Shadows & Transitions */
+            --shadow-subtle: 0 4px 20px rgba(46, 125, 50, 0.03);
+            --shadow-normal: 0 12px 35px rgba(46, 125, 50, 0.07);
+            --shadow-premium: 0 24px 55px rgba(46, 125, 50, 0.12);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-sm: 12px;
+            --radius-md: 24px;
+            --radius-lg: 36px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Top Sticky Floating Navigation Menu */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2.5rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary-accent);
+            text-decoration: none;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background-color: var(--primary);
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Header Workspace */
+        header {
+            padding: 6.5rem 2.5rem 4.5rem;
+            background: radial-gradient(circle at 85% 15%, #e8f5e9 0%, transparent 45%), var(--bg-body);
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: var(--primary-light);
+            color: var(--primary-accent);
+            padding: 0.6rem 1.4rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.75px;
+            margin-bottom: 1.8rem;
+            border: 1px solid rgba(46, 125, 50, 0.15);
+        }
+
+        .hero-content h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -2px;
+            color: var(--text-main);
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+
+        .hero-intro {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            text-align: justify;
+        }
+
+        /* Student Biography Information Card */
+        .meta-card {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+            padding: 1.8rem;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .meta-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.8px;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        /* Sustainable Target Block Accent */
+        .sdg-highlight {
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            margin-top: 2.5rem;
+            box-shadow: var(--shadow-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sdg-highlight::after {
+            content: '\f4d8';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: -25px;
+            bottom: -35px;
+            font-size: 11rem;
+            opacity: 0.08;
+        }
+
+        .sdg-highlight h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .sdg-highlight p {
+            font-size: 1rem;
+            opacity: 0.92;
+            line-height: 1.65;
+            text-align: justify;
+        }
+
+        /* Visual Graphic Frame representing the student user icon */
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-frame {
+            position: relative;
+            width: 340px;
+            height: 340px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(145deg, #ffffff, #e8f5e9);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-premium);
+        }
+
+        .profile-art {
+            text-align: center;
+            color: var(--primary-accent);
+        }
+
+        .profile-art i {
+            font-size: 5.5rem;
+            margin-bottom: 1.2rem;
+            display: block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-art .matric-tag {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+            color: var(--text-main);
+        }
+
+        /* Generic Section Formatting Rules */
+        section {
+            padding: 6.5rem 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Grid Framework for Laboratories */
+        .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+        }
+
+        .lab-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lab-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-premium);
+            border-color: rgba(46, 125, 50, 0.25);
+        }
+
+        /* 16:9 Responsive Video Viewports */
+        .media-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .media-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .lab-info {
+            padding: 2.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lab-info h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .lab-info .lab-sub {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        /* Custom Structured Internal Blocks */
+        .insight-block {
+            background-color: var(--primary-light);
+            border-left: 4.5px solid var(--primary);
+            padding: 1.4rem;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.95rem;
+            margin-top: auto;
+            color: #213324;
+            text-align: justify;
+        }
+
+        .insight-block h4 {
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--primary-accent);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Stack Rules for Projects Display cards */
+        .projects-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+        }
+
+        .project-showcase-card {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-normal);
+            transition: var(--transition);
+        }
+
+        .project-showcase-card:hover {
+            box-shadow: var(--shadow-premium);
+            border-color: rgba(46, 125, 50, 0.2);
+        }
+
+        .project-narrative {
+            padding: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-meta-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.45rem 1rem;
+            background-color: var(--primary-light);
+            color: var(--primary-accent);
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .project-badge.cloud-stack {
+            background-color: #edf7ed;
+            color: #1e4620;
+            border: 1px solid rgba(46, 125, 50, 0.15);
+        }
+
+        .problem-callout {
+            background-color: var(--accent-light);
+            border-left: 4.5px solid var(--accent);
+            padding: 1.4rem;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        .problem-callout h4 {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .project-narrative .insight-block {
+            background: #fafdfa;
+            border-color: var(--secondary);
+        }
+
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            background-color: #1a231c;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 1rem 2.2rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            margin-top: 2rem;
+            width: fit-content;
+            box-shadow: 0 4px 15px rgba(26, 35, 28, 0.15);
+        }
+
+        .github-btn:hover {
+            background-color: #050806;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(26, 35, 28, 0.3);
+        }
+
+        /* Journey Container Formatting */
+        .journey-block {
+            background: linear-gradient(145deg, #f4faf5 0%, #ffffff 100%);
+            padding: 4.5rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(46, 125, 50, 0.12);
+            box-shadow: var(--shadow-normal);
+            position: relative;
+        }
+
+        .journey-block i.quote-marker {
+            font-size: 3.5rem;
+            color: rgba(46, 125, 50, 0.08);
+            position: absolute;
+            top: 3.5rem;
+            left: 3.5rem;
+        }
+
+        .journey-essay {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-main);
+            line-height: 1.85;
+            position: relative;
+            z-index: 2;
+            text-align: justify;
+        }
+
+        /* Technologies Capsule Container Elements */
+        .skills-wrapper {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 4rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .capsules-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+        }
+
+        .tech-capsule {
+            background-color: #f7fbf8;
+            border: 1px solid var(--border-color);
+            padding: 0.9rem 1.8rem;
+            border-radius: 100px;
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            transition: var(--transition);
+        }
+
+        .tech-capsule:hover {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary-accent);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .tech-capsule i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Resource and Compliance Column Splits */
+        .split-resources {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3.5rem;
+        }
+
+        .references-box, .integrity-box {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .references-box h3, .integrity-box h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .references-box h3 i { color: var(--primary); }
+        .integrity-box h3 i { color: var(--accent); }
+
+        .items-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+        }
+
+        .items-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .items-list li i {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .integrity-box {
+            background: linear-gradient(135deg, #fffbf7 0%, #ffffff 100%);
+            border-color: rgba(230, 81, 0, 0.15);
+        }
+
+        .integrity-box p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+
+        /* System Footer Area */
+        footer {
+            background-color: #121a14;
+            color: #8fa393;
+            padding: 4.5rem 2.5rem;
+            border-top: 1px solid #1d2b20;
+        }
+
+        .footer-wrap {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left h4 {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-right {
+            font-size: 0.9rem;
+            text-align: right;
+        }
+
+        /* Mobile Optimization and Desktop Media Adjustments */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3.5rem;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-badge, .meta-card {
+                justify-content: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-intro {
+                text-align: center;
+            }
+            .project-showcase-card {
+                grid-template-columns: 1fr;
+            }
+            .project-narrative {
+                padding: 2.5rem;
+            }
+            .split-resources {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1.2rem;
+                padding: 1.2rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            section {
+                padding: 4.5rem 1.5rem;
+            }
+            .journey-block {
+                padding: 3rem 1.8rem;
+            }
+            .items-list {
+                grid-template-columns: 1fr;
+            }
+            .footer-wrap {
+                flex-direction: column;
+                gap: 1.8rem;
+                text-align: center;
+            }
+            .footer-right {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo"><i class="fa-solid fa-leaf"></i> MAIZATUL ASYIKIEN</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#labs">Labs</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#reflection">Reflection</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Workspace Area -->
+    <header id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-mobile-screen-button"></i> Mobile Application e-Portfolio
+                </div>
+                <h1>Engineering Sustainable Mobile Systems <span>MakanJimat</span></h1>
+                <p class="hero-intro">
+                    MakanJimat is a sustainable food rescue application developed independently to bridge the gap between restaurant surplus inventory management and responsible consumer consumption. Built using modern Android architecture, the app integrates local data persistence, real-time cloud synchronization, and hardware GPS sensors to deliver a seamless, eco-friendly food ecosystem on a single mobile device. It is designed to empower users to rescue high-quality surplus meals at discounted prices while simplifying the transition toward a circular economy and reducing the environmental footprint of the local food industry.
+                </p>
+
+                <!-- Academic Profiles -->
+                <div class="meta-card">
+                    <div class="meta-item">
+                        <span class="meta-label">Student Name</span>
+                        <span class="meta-value">MAIZATUL ASYIKIEN BINTI MOHD YUSRI</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Matric Number</span>
+                        <span class="meta-value">A211722</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Academic Programme</span>
+                        <span class="meta-value">INFORMATION TECHNOLOGY</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Course Instructor</span>
+                        <span class="meta-value">DR. RIMANIZA BINTI ZAINAL ABIDIN</span>
+                    </div>
+                </div>
+
+                <!-- SDG Target Column Box -->
+                <div class="sdg-highlight">
+                    <h3><i class="fa-solid fa-recycle"></i> SDG Goal 12: Responsible Consumption and Production</h3>
+                    <p>MakanJimat directly promotes sustainable resource management and waste reduction by eliminating critical environmental roadblocks such as consumer unawareness of surplus food availability, lack of localized access to discounted meals, and the disconnect between food retailers and eco-conscious communities.</p>
+                </div>
+            </div>
+
+            <!-- Profile Graphic -->
+            <div class="profile-container">
+                <div class="profile-frame">
+                    <div class="profile-art">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span class="matric-tag">STUDENT HUB</span>
+                        <p style="font-size:0.85rem; color: var(--text-muted); font-weight:700; margin-top:0.3rem;">FTSM / UKM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section for Lab Deliverables -->
+    <section id="labs">
+        <div class="section-header">
+            <h2>Core Laboratory Competencies</h2>
+            <p>Chronological breakdown of skills acquired during foundational practicals, covering interface scaffolding to database configuration mapping.</p>
+        </div>
+
+        <div class="labs-grid">
+            <!-- Lab 1 Element -->
+            <div class="lab-card">
+                <div class="media-container">
+                    <iframe src="https://www.youtube.com/embed/Iwj0RkXZWsQ" allowfullscreen></iframe>
+                </div>
+                <div class="lab-info">
+                    <span class="lab-sub">Lab Exercise 01</span>
+                    <h3>Basic Layouts with Jetpack Compose</h3>
+                    <div class="insight-block">
+                        <h4><i class="fa-solid fa-code"></i> Engineering Analysis</h4>
+                        <p>I successfully learned to structure modern Android interfaces using Box, Column, and Row structural layouts in Jetpack Compose. This exercise enhanced my understanding of handling visual element arrangements and using modifiers effectively for padding and styling adjustments. It built a strong foundation for managing UI configurations cleanly without legacy XML trees.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab 2 Element -->
+            <div class="lab-card">
+                <div class="media-container">
+                    <iframe src="https://www.youtube.com/embed/M4FGsKU91-w" allowfullscreen></iframe>
+                </div>
+                <div class="lab-info">
+                    <span class="lab-sub">Lab Exercise 02</span>
+                    <h3>Interaction with Jetpack Compose</h3>
+                    <div class="insight-block">
+                        <h4><i class="fa-solid fa-code"></i> Engineering Analysis</h4>
+                        <p>This lab expanded my skills into building active client interactivity through state management primitives like remember and mutableStateOf. Dealing with text inputs, responsive buttons, and instant interface text updates taught me the mechanics of composition and recomposition loops. Mastering these states is highly critical for running user-driven logic later on inside the application features.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab 3 Element -->
+            <div class="lab-card">
+                <div class="media-container">
+                    <iframe src="https://www.youtube.com/embed/uKXZhMQQEPc" allowfullscreen></iframe>
+                </div>
+                <div class="lab-info">
+                    <span class="lab-sub">Lab Exercise 03</span>
+                    <h3>Material Design Implementation</h3>
+                    <div class="insight-block">
+                        <h4><i class="fa-solid fa-code"></i> Engineering Analysis</h4>
+                        <p>I structured comprehensive screen typography layouts using Material 3 thematic styling palettes, advanced Cards, and standard scaffolding. This taught me how to manage elevated containers and customized design layouts across native item sets smoothly. The resulting interface aesthetics looked notably cleaner and significantly improved overall usability standards.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab 4 Element -->
+            <div class="lab-card">
+                <div class="media-container">
+                    <iframe src="https://www.youtube.com/embed/4gm3yfuaqhc" allowfullscreen></iframe>
+                </div>
+                <div class="lab-info">
+                    <span class="lab-sub">Lab Exercise 04</span>
+                    <h3>Navigation and View Model</h3>
+                    <div class="insight-block">
+                        <h4><i class="fa-solid fa-code"></i> Engineering Analysis</h4>
+                        <p>I built explicit navigation routes utilizing the NavHost controller structure to link multiple active views together in sequence. This helped me understand how to carry parameter arguments between distinct execution contexts while maintaining correct state records. Handling deep cross-navigation logic gave me the structural confidence needed to plan out my project's user flows.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab 5 Element -->
+            <div class="lab-card">
+                <div class="media-container">
+                    <iframe src="https://www.youtube.com/embed/LnUf6--nfj0" allowfullscreen></iframe>
+                </div>
+                <div class="lab-info">
+                    <span class="lab-sub">Lab Exercise 05</span>
+                    <h3>Room Database Integration</h3>
+                    <div class="insight-block">
+                        <h4><i class="fa-solid fa-code"></i> Engineering Analysis</h4>
+                        <p>This lab involved establishing an organized SQLite database interface layer managed cleanly by standard Room persistence tools. Defining clean schemas, Data Access Objects (DAOs), and exposing data flows as observable streams clarified the local storage architecture. It ensured app records could easily outlast standard lifecycle destructions or missing connectivity states.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section for Project Deliverables -->
+    <section id="projects">
+        <div class="section-header">
+            <h2>Production Application Capstones</h2>
+            <p>Architecting an incremental enterprise mobile solution aimed at addressing urban ecosystem efficiencies and global food security impact metrics.</p>
+        </div>
+
+        <div class="projects-stack">
+            <!-- Project 1 Module Card -->
+            <div class="project-showcase-card">
+                <div class="media-container" style="height: 100%; min-height: 360px;">
+                    <iframe src="https://www.youtube.com/embed/KVTnParQo8I" allowfullscreen></iframe>
+                </div>
+                <div class="project-narrative">
+                    <div class="project-meta-row">
+                        <span class="project-badge">Project 1 Milestone</span>
+                        <span class="project-badge cloud-stack"><i class="fa-solid fa-layer-group"></i> Navigation Core MVP</span>
+                    </div>
+                    <h3>MAKANJIMAT (Architectural Framework)</h3>
+                    
+                    <div class="problem-callout">
+                        <h4><i class="fa-solid fa-triangle-exclamation"></i> Problem Statement</h4>
+                        <p>The modern food industry generates massive amounts of high-quality surplus food that is discarded daily due to inefficient redistribution channels and a lack of consumer awareness. This cycle creates a critical environmental and social burden, as valuable resources are wasted while carbon emissions from food disposal continue to accelerate global climate change.</p>
+                    </div>
+
+                    <div class="insight-block">
+                        <h4><i class="fa-solid fa-graduation-cap"></i> Lessons Learned</h4>
+                        <p>I learned how to scale a multi-screen application for MAKANJIMAT by establishing a robust navigation framework using NavHost to manage complex state transitions across five distinct screens. This phase deepened my understanding of state hoisting through a centralized ViewModel, enabling me to share 'food rescue' data seamlessly between UI components without the need for persistent storage. Additionally, I gained hands-on experience in implementing Material 3 design principles and custom styling to ensure a consistent, professional user experience that clearly communicates the impact of SDG 12 to the user.</p>
+                    </div>
+
+                    <a href="https://github.com/maizatulasyikien/A211722_MAIZATULASYIKIEN_DRRIMANIZA_Project1.git" target="_blank" class="github-btn">
+                        <i class="fa-brands fa-github"></i> Inspect Project Repository
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2 Module Card -->
+            <div class="project-showcase-card">
+                <div class="media-container" style="height: 100%; min-height: 360px;">
+                    <iframe src="https://www.youtube.com/embed/9GAOlCLmz70" allowfullscreen></iframe>
+                </div>
+                <div class="project-narrative">
+                    <div class="project-meta-row">
+                        <span class="project-badge">Project 2 Milestone</span>
+                        <span class="project-badge cloud-stack" style="background-color:#e8f4fd; color:#0d47a1; border-color:rgba(13,71,161,0.1);"><i class="fa-solid fa-cloud-bolt"></i> API & Cloud Suite</span>
+                    </div>
+                    <h3>MAKANJIMAT (Ecosystem Deployment)</h3>
+                    
+                    <div class="problem-callout">
+                        <h4><i class="fa-solid fa-triangle-exclamation"></i> Problem Statement</h4>
+                        <p>Effective food waste reduction requires real-time visibility of surplus inventory and community-wide data synchronization, which traditional static food applications cannot provide. MakanJimat solves this by integrating web APIs for live sustainability news, hardware GPS sensors for immediate store discovery, and secure cloud databases to guarantee that surplus food rescue opportunities are identified instantly and environmental impacts are recorded accurately for the community.</p>
+                    </div>
+
+                    <div class="insight-block">
+                        <h4><i class="fa-solid fa-graduation-cap"></i> Lessons Learned</h4>
+                        <p>Developing MAKANJIMAT taught me how to architect a complex Android ecosystem that handles concurrent asynchronous tasks using Kotlin Coroutines and Retrofit for real-time sustainability data fetching. I gained invaluable hands-on experience in utilizing the Android hardware sensor framework for GPS-based store discovery and configuring cloud infrastructures like Firebase Firestore to bridge local Room database workflows smoothly with remote backends. This journey solidified my understanding of modern Android architecture and demonstrated how integrating diverse technical pillars—API, Sensors, and Persistence—can create a powerful, data-driven solution for achieving SDG 12.</p>
+                    </div>
+
+                    <a href="https://github.com/maizatulasyikien/A211722_MAIZATULASYIKIEN_DR_RIMANIZA_PROJECT2.git" target="_blank" class="github-btn">
+                        <i class="fa-brands fa-github"></i> Inspect Production Repository
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Journey Reflections -->
+    <section id="reflection">
+        <div class="section-header">
+            <h2>Retrospective Learning Journey</h2>
+            <p>Evaluating standard personal growth vectors and engineering advancements unlocked over the timeline of this course.</p>
+        </div>
+
+        <div class="journey-block">
+            <i class="fa-solid fa-quote-left quote-marker"></i>
+            <p class="journey-essay">
+                Over the course of developing MAKANJIMAT from Lab 1 to Project 2, my skills evolved from designing basic layouts to architecting a complete, data-driven mobile ecosystem. Navigating through the implementation of reactive UI, complex navigation architectures, and local Room databases completely redefined my understanding of the Android lifecycle. Integrating advanced capabilities like asynchronous web APIs, hardware sensor frameworks, and remote cloud infrastructure challenged me to think like an enterprise-level software engineer. Ultimately, this journey has not only made me proficient in Jetpack Compose and modern Kotlin practices, but it has also proven how digital technology can be leveraged to create impactful, sustainable real-world solutions under SDG 12.
+            </p>
+        </div>
+    </section>
+
+    <!-- Capabilities Matrix Section -->
+    <section id="skills">
+        <div class="section-header">
+            <h2>Technical Core Competencies</h2>
+            <p>The explicit set of technologies, languages, and structural patterns mastered during the development cycles.</p>
+        </div>
+
+        <div class="skills-wrapper">
+            <div class="capsules-container">
+                <div class="tech-capsule"><i class="fa-solid fa-code-commit"></i> Kotlin Core & Async Coroutines</div>
+                <div class="tech-capsule"><i class="fa-solid fa-cubes"></i> Jetpack Compose Core Engine</div>
+                <div class="tech-capsule"><i class="fa-solid fa-sitemap"></i> MVVM Clean Architecture</div>
+                <div class="tech-capsule"><i class="fa-solid fa-database"></i> Room Persistence Schema</div>
+                <div class="tech-capsule"><i class="fa-solid fa-network-wired"></i> Retrofit HTTP REST Service</div>
+                <div class="tech-capsule"><i class="fa-solid fa-fire"></i> Firebase Cloud Firestore</div>
+                <div class="tech-capsule"><i class="fa-solid fa-location-crosshairs"></i> Android GPS Location API</div>
+                <div class="tech-capsule"><i class="fa-solid fa-compass"></i> Compose Navigation Router Trees</div>
+                <div class="tech-capsule"><i class="fa-solid fa-sliders"></i> Centralized ViewModel State Controller</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Source Infrastructure Matrix -->
+    <section id="resources">
+        <div class="section-header">
+            <h2>Engineering Integrity & References</h2>
+            <p>Full breakdown of external systems dependencies and academic support tools utilized to build the portfolio ecosystem.</p>
+        </div>
+
+        <div class="split-resources">
+            <div class="references-box">
+                <h3><i class="fa-solid fa-bookmark"></i> Framework Libraries</h3>
+                <ul class="items-list">
+                    <li><i class="fa-solid fa-square-check"></i> Android Jetpack Toolkit Suite</li>
+                    <li><i class="fa-solid fa-square-check"></i> Google Material 3 UI Guidelines</li>
+                    <li><i class="fa-solid fa-square-check"></i> Square Retrofit Connectors Client</li>
+                    <li><i class="fa-solid fa-square-check"></i> Room SQLite Mapping Components</li>
+                    <li><i class="fa-solid fa-square-check"></i> Firebase Cloud Android SDK Tools</li>
+                    <li><i class="fa-solid fa-square-check"></i> Kotlin Asynchronous Flow Engine</li>
+                </ul>
+            </div>
+
+            <div class="integrity-box">
+                <h3><i class="fa-solid fa-robot"></i> AI Usage Acknowledgement</h3>
+                <p>
+                    Generative artificial intelligence tools were utilized during development phases to research responsive layout properties, structure clean inline documentation blocks, optimize code readability, and resolve data binding conflicts encountered during Room and Firebase configuration tasks.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer System Element -->
+    <footer>
+        <div class="footer-wrap">
+            <div class="footer-left">
+                <h4>MAIZATUL ASYIKIEN BINTI MOHD YUSRI</h4>
+                <p style="font-size: 0.85rem; color: #617567; margin-top: 0.15rem;">Information Technology Undergraduate • FTSM • UKM</p>
+            </div>
+            <div class="footer-right">
+                <p><strong>Matric ID:</strong> A211722</p>
+                <p style="color: #617567; margin-top: 0.2rem;">&copy; 2026 • TK2323 / TM2213 Mobile Programming Module</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Section Track Script -->
+    <script>
+        const targetSections = document.querySelectorAll('section, header');
+        const anchors = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let activeId = '';
+            targetSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 250)) {
+                    activeId = section.getAttribute('id');
+                }
+            });
+
+            anchors.forEach(anchor => {
+                anchor.classList.remove('active');
+                if (anchor.getAttribute('href').includes(activeId)) {
+                    anchor.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
